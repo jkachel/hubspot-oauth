@@ -1,0 +1,7 @@
+{
+  "name": "jkachel/hubspot-oauth",
+  "version": "0.1",
+  "require": {
+    "lusitanian/oauth": "~0.8"
+  }
+}
