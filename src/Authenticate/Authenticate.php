@@ -54,7 +54,7 @@
 			$this->client = new Client([ 'base_uri' => 'https://api.hubapi.com/' ]);
 
 			if($asset_token != false && is_object($expiry_timestamp)) {
-				$this->access_token = $asset_token;
+				$this->access_token = $access_token;
 				$this->refresh_token = $refresh_token;
 
 				if(get_class($expiry_timestamp) == 'DateTime') {
