@@ -1,7 +1,28 @@
 {
   "name": "jkachel/hubspot-oauth",
-  "version": "0.1",
+  "type": "library",
+  "description": "OAuth(ish)-based library for HubSpot",
+  "keywords": ["framework", "http", "rest", "web service", "curl", "client", "HTTP client", "hubspot", "guzzle"],
+  "homepage": "http://github.org/jkachel/hubspot-oauth/",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "James Kachel",
+      "email": "james@jkachel.com",
+      "homepage": "http://jkachel.com"
+    }
+  ],
+  "autoload": {
+    "files": [
+      "src/defines.php"
+    ],
+    "psr-4": {
+      "HubspotOauth\\": "src/"
+    }
+  },
   "require": {
-    "lusitanian/oauth": "~0.8"
+    "php": ">=5.6.0",
+    "guzzlehttp/guzzle": "6.*",
+    "nesbot/carbon": "^1.21"
   }
 }
