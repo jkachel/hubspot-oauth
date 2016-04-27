@@ -25,14 +25,15 @@
     require_once('vendor/autoload.php');
 
     use HubspotOauth\Authenticate\Authenticate;
+    use HubspotOauth\Entities\ContactProperty;
     use Carbon\Carbon;
 
     /**
      * Specify your Portal ID (Hub ID) and Client ID here.
      */
 
-    $myHubId = '';
-    $myClientId = '';
+    $myHubId = '2198964';
+    $myClientId = '01be8aa1-f145-11e5-b977-4541e4d901e9';
     $myUri = 'http://localhost:3333/hubspot-oauth.php';
 
     function displayHeader() {
@@ -106,6 +107,19 @@
         try {
             $resp = $auth->call('get', '/contacts/v1/lists/all/contacts/all');
             $data = $resp['response']['contacts'];
+            $resp2 = new ContactProperty($auth);
+
+            $resp2->name = md5(time());
+            $resp2->label = 'This is a test property';
+            $resp2->description = 'Whee, testing!';
+            $resp2->groupName = 'Testing';
+            $resp2->type = 'string';
+            $resp2->fieldType = 'text';
+            $resp2->formField = true;
+            $resp2->displayOrder = 6;
+            $resp2->options = [];
+
+            $resp2->save();
 ?>
 <div class="container-fluid">
     <div class="row">

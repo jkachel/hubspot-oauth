@@ -53,7 +53,7 @@
 
 			$this->client = new Client([ 'base_uri' => 'https://api.hubapi.com/' ]);
 
-			if($asset_token != false && is_object($expiry_timestamp)) {
+			if($access_token != false && is_object($expiry_timestamp)) {
 				$this->access_token = $access_token;
 				$this->refresh_token = $refresh_token;
 
@@ -66,7 +66,7 @@
 			}
 		}
 
-			/** @brief Creates the URL to redirect the user to for login.
+		/** @brief Creates the URL to redirect the user to for login.
 		 *
 		 * Parameters:
 		 * $endpoint	The endpoint URL that the client should be redirected to once they attempt to log in
