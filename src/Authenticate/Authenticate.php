@@ -102,7 +102,7 @@
 
 		public function process($request) {
 			if(is_object($request) && get_class($request) == 'Illuminate\Http\Request') {
-				$data = $request->only('access_token', 'expires_in', 'refresh_token', 'error', 'scope');
+				$data = $request->all();
 			} else {
 				$data = $request;
 			}
@@ -202,6 +202,10 @@
 		 **/
 
 		public function call($method, $endpoint, $data = []) {
+			if(!is_object($this->expiry_timestamp)) {
+				throw new \Exception('No access key provided; please authenticate first.');
+			}
+
 			if($this->expiry_timestamp->diffInSeconds(Carbon::now(), true) < 30) {
 				// about 30 seconds until timeout, try to refresh now
 				// not going to try to handle errors here: if the API timed out, the underlying app needs to deal with that
