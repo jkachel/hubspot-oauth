@@ -102,7 +102,7 @@
 
 		public function process($request) {
 			if(is_object($request) && get_class($request) == 'Illuminate\Http\Request') {
-				$data = $request->input('access_token', 'expires_in', 'refresh_token', 'error', 'scope');
+				$data = $request->only('access_token', 'expires_in', 'refresh_token', 'error', 'scope');
 			} else {
 				$data = $request;
 			}
