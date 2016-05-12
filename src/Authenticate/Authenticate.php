@@ -97,7 +97,7 @@
 		 * Parameters:
 		 * $request		Either the Laravel Request for the request or the GET variables from the request as an array.
 		 *
-		 * Returns true on success, or throws an Exception on failure
+		 * Returns an array of auth details on success, or throws an Exception on failure
 		 **/
 
 		public function process($request) {
@@ -121,7 +121,7 @@
 			$this->expiry_time = $data['expires_in'];
 			$this->expiry_timestamp = Carbon::now()->addSeconds($this->expiry_time);
 
-			return true;
+			return array($this->access_token, $this->expiry_timestamp, $this->refresh_token);
 		}
 
 		/** @brief Refreshes the OAuth access token.
